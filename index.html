@@ -64,7 +64,31 @@
     </section>
 
     <section id="contact" class="contact-section">
-      <div class="container contact-box"><div><span class="eyebrow">UN PROJET EN TÊTE ?</span><h2>Faisons quelque chose de remarquable.</h2><p>Remplacez les coordonnées ci-dessous par vos informations avant la mise en ligne.</p></div><div class="contact-actions"><a <a class="btn" href="https://wa.me/2290192271790" target="_blank" rel="noopener">Écrire sur WhatsApp</a><a class="outline" href="mailto:tsallygodwin@gmail.com">Envoyer un email</a></div></div>
+  <div class="container contact-box">
+    <div>
+      <span class="eyebrow">UN PROJET EN TÊTE ?</span>
+      <h2>Faisons quelque chose de remarquable.</h2>
+      <p>Décrivez votre projet et recevez une réponse rapidement sur WhatsApp.</p>
+    </div>
+
+    <form class="project-form" id="projectForm">
+      <input type="text" id="clientName" placeholder="Votre nom" required>
+
+      <select id="service" required>
+        <option value="">Choisissez un service</option>
+        <option value="Design graphique">Design graphique</option>
+        <option value="Création de contenu">Création de contenu</option>
+        <option value="Gestion des réseaux sociaux">Gestion des réseaux sociaux</option>
+        <option value="Création assistée par IA">Création assistée par IA</option>
+      </select>
+
+      <textarea id="projectMessage" placeholder="Décrivez votre projet..." rows="5" required></textarea>
+
+      <button type="submit" class="btn">Envoyer ma demande sur WhatsApp</button>
+
+      <a class="outline" href="mailto:tsallygodwin@gmail.com">Envoyer un email</a>
+    </form>
+  </div>
     </section>
   </main>
   <footer><div class="container foot"><span>© 2026 God Digital</span><span>Votre vision, notre création.</span></div></footer>
