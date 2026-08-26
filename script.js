@@ -21,4 +21,18 @@ if (projectForm) {
       "_blank"
     );
   });
-}
+}const offerButtons = document.querySelectorAll("[data-offer]");
+
+offerButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const offer = button.dataset.offer;
+    const messageField = document.getElementById("projectMessage");
+
+    if (messageField) {
+      messageField.value =
+        "Bonjour God Digital, je suis intéressé(e) par l'offre " +
+        offer +
+        ". Je voudrais avoir plus d'informations.";
+    }
+  });
+});
