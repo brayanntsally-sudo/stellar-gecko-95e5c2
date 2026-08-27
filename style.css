@@ -272,4 +272,32 @@
   .offer-card h3 {
     font-size: 28px;
   }
+}/* Bouton WhatsApp flottant */
+.whatsapp-float {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 100;
+  background: #25d366;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 800;
+  padding: 14px 18px;
+  border-radius: 999px;
+  box-shadow: 0 8px 25px rgba(0,0,0,.25);
+  transition: transform .2s, box-shadow .2s;
+}
+
+.whatsapp-float:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(0,0,0,.3);
+}
+
+@media (max-width: 520px) {
+  .whatsapp-float {
+    right: 14px;
+    bottom: 14px;
+    padding: 12px 15px;
+    font-size: 13px;
+  }
 }
