@@ -695,4 +695,103 @@
   .delete-client {
     flex-shrink: 0;
   }
+}// =========================
+// GESTION DES CLIENTS
+// =========================
+
+const clientForm = document.getElementById("clientForm");
+const clientsList = document.getElementById("clientsList");
+
+let clients = JSON.parse(localStorage.getItem("godDigitalClients")) || [];
+
+function displayClients() {
+  if (!clientsList) return;
+
+  if (clients.length === 0) {
+    clientsList.innerHTML =
+      '<p class="admin-empty">Aucun client enregistré.</p>';
+    return;
+  }
+
+  clientsList.innerHTML = clients.map((client, index) => `
+    <div class="client-item">
+      <div class="client-info">
+        <strong>${escapeHTML(client.name)}</strong>
+        <span>📞 ${escapeHTML(client.phone)}</span>
+        <span>📁 ${escapeHTML(client.project)}</span>
+      </div>
+
+      <button
+        class="delete-client"
+        data-index="${index}"
+        type="button"
+      >
+        Supprimer
+      </button>
+    </div>
+  `).join("");
+
+  document.querySelectorAll(".delete-client").forEach(button => {
+    button.addEventListener("click", () => {
+      const index = Number(button.dataset.index);
+
+      if (confirm("Supprimer ce client ?")) {
+        clients.splice(index, 1);
+        localStorage.setItem(
+          "godDigitalClients",
+          JSON.stringify(clients)
+        );
+        displayClients();
+        updateClientCount();
+      }
+    });
+  });
 }
+
+function updateClientCount() {
+  const counter = document.getElementById("clientCount");
+
+  if (counter) {
+    counter.textContent = clients.length;
+  }
+}
+
+function escapeHTML(value) {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+if (clientForm) {
+  clientForm.addEventListener("submit", event => {
+    event.preventDefault();
+
+    const name = document.getElementById("clientName").value.trim();
+    const phone = document.getElementById("clientPhone").value.trim();
+    const project = document.getElementById("clientProject").value.trim();
+
+    if (!name || !phone || !project) return;
+
+    clients.push({
+      name,
+      phone,
+      project
+    });
+
+    localStorage.setItem(
+      "godDigitalClients",
+      JSON.stringify(clients)
+    );
+
+    clientForm.reset();
+
+    displayClients();
+    updateClientCount();
+  });
+}
+
+displayClients();
+updateClientCount();
