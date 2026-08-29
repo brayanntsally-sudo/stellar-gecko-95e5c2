@@ -609,4 +609,90 @@
   .admin-link {
     margin-top: 8px;
   }
+}/* =========================
+   FORMULAIRE CLIENTS ADMIN
+   ========================= */
+
+.admin-form {
+  display: grid;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.admin-form input {
+  width: 100%;
+  padding: 14px 15px;
+  background: #090909;
+  color: #fff;
+  border: 1px solid #303030;
+  border-radius: 12px;
+  outline: none;
+  font: inherit;
+}
+
+.admin-form input::placeholder {
+  color: #777;
+}
+
+.admin-form input:focus {
+  border-color: var(--gold);
+}
+
+.clients-list {
+  margin-top: 25px;
+  display: grid;
+  gap: 10px;
+}
+
+.admin-empty {
+  color: #777;
+  font-size: 14px;
+}
+
+.client-item {
+  background: #090909;
+  border: 1px solid #292929;
+  border-radius: 14px;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+
+.client-info strong {
+  display: block;
+  font-size: 16px;
+}
+
+.client-info span {
+  display: block;
+  color: #888;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.delete-client {
+  background: transparent;
+  border: 1px solid #444;
+  color: #aaa;
+  border-radius: 999px;
+  padding: 7px 10px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.delete-client:hover {
+  border-color: #d66;
+  color: #fff;
+}
+
+@media (max-width: 520px) {
+  .client-item {
+    align-items: flex-start;
+  }
+
+  .delete-client {
+    flex-shrink: 0;
+  }
 }
