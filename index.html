@@ -298,11 +298,42 @@
 
     <div class="admin-grid">
 
-      <article class="admin-section">
-        <span>GESTION</span>
-        <h3>👥 Clients</h3>
-        <p>Ajouter, consulter et gérer vos clients.</p>
-        <button class="admin-action">Gérer les clients</button>
+      <article class="admin-section" id="clientsAdmin">
+  <span>GESTION</span>
+  <h3>👥 Clients</h3>
+
+  <form id="clientForm" class="admin-form">
+
+    <input
+      type="text"
+      id="clientName"
+      placeholder="Nom du client"
+      required
+    >
+
+    <input
+      type="tel"
+      id="clientPhone"
+      placeholder="Téléphone"
+      required
+    >
+
+    <input
+      type="text"
+      id="clientProject"
+      placeholder="Projet"
+      required
+    >
+
+    <button type="submit" class="admin-action">
+      + Ajouter le client
+    </button>
+
+  </form>
+
+  <div id="clientsList" class="clients-list">
+    <p class="admin-empty">Aucun client enregistré.</p>
+  </div>
       </article>
 
       <article class="admin-section">
