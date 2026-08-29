@@ -439,4 +439,174 @@
   .testimonials-grid {
     grid-template-columns: 1fr;
   }
+  }/* =========================
+   ESPACE ADMINISTRATEUR
+   ========================= */
+
+.admin-link {
+  background: transparent;
+  border: 1px solid #333;
+  color: #aaa;
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.admin-link:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.admin-panel {
+  min-height: 100vh;
+  background: #090909;
+  color: #fff;
+  padding: 55px 0 80px;
+}
+
+.admin-container {
+  width: min(1100px, 92%);
+  margin: auto;
+}
+
+.admin-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 25px;
+  margin-bottom: 45px;
+}
+
+.admin-top h2 {
+  font-size: clamp(40px, 6vw, 64px);
+  line-height: 1;
+  margin: 12px 0;
+}
+
+.admin-top p {
+  color: #999;
+}
+
+.admin-close {
+  background: transparent;
+  border: 1px solid #444;
+  color: #fff;
+  padding: 12px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.admin-close:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.admin-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.admin-card {
+  background: #111;
+  border: 1px solid #252525;
+  border-radius: 18px;
+  padding: 25px;
+}
+
+.admin-card span,
+.admin-section > span {
+  color: var(--gold);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.admin-card strong {
+  display: block;
+  font-size: 30px;
+  margin: 12px 0 4px;
+}
+
+.admin-card small {
+  color: #777;
+}
+
+.admin-gold {
+  border-color: var(--gold);
+}
+
+.admin-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.admin-section {
+  background: #111;
+  border: 1px solid #252525;
+  border-radius: 20px;
+  padding: 28px;
+}
+
+.admin-section h3 {
+  font-size: 24px;
+  margin: 18px 0 8px;
+}
+
+.admin-section p {
+  color: #999;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.admin-action {
+  margin-top: 15px;
+  background: var(--gold);
+  color: #111;
+  border: 1px solid var(--gold);
+  border-radius: 999px;
+  padding: 11px 16px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+@media (max-width: 850px) {
+  .admin-stats {
+    grid-template-columns: 1fr 1fr;
   }
+}
+
+@media (max-width: 520px) {
+  .admin-panel {
+    padding: 35px 0 60px;
+  }
+
+  .admin-top {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .admin-top h2 {
+    font-size: 42px;
+  }
+
+  .admin-stats,
+  .admin-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-card {
+    padding: 22px;
+  }
+
+  .admin-section {
+    padding: 24px;
+  }
+
+  .admin-link {
+    margin-top: 8px;
+  }
+}
