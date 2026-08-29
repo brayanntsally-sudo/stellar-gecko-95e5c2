@@ -35,4 +35,31 @@ offerButtons.forEach((button) => {
         ". Je voudrais avoir plus d'informations.";
     }
   });
-});
+});// =========================
+// ESPACE ADMINISTRATEUR
+// =========================
+
+const openAdmin = document.getElementById("openAdmin");
+const closeAdmin = document.getElementById("closeAdmin");
+const adminPanel = document.getElementById("adminPanel");
+
+if (openAdmin && closeAdmin && adminPanel) {
+
+  openAdmin.addEventListener("click", () => {
+    adminPanel.hidden = false;
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  });
+
+  closeAdmin.addEventListener("click", () => {
+    adminPanel.hidden = true;
+
+    window.scrollTo({
+      top: document.body.scrollHeight,
+      behavior: "smooth"
+    });
+  });
+
+}
