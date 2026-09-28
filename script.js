@@ -1,14 +1,20 @@
 // =====================================================
-// GOD DIGITAL - SCRIPT PRINCIPAL
+// TSALLY-DIGITAL / GOD DIGITAL
+// SCRIPT PRINCIPAL
 // =====================================================
 
 
 // =====================================================
-// FILTRES DES RÉALISATIONS
+// FILTRES PORTFOLIO
 // =====================================================
 
-const filterButtons = [...document.querySelectorAll(".filters button")];
-const projects = [...document.querySelectorAll(".project")];
+const filterButtons = [
+  ...document.querySelectorAll(".filters button")
+];
+
+const projects = [
+  ...document.querySelectorAll(".project")
+];
 
 filterButtons.forEach((button) => {
 
@@ -24,10 +30,14 @@ filterButtons.forEach((button) => {
 
     projects.forEach((project) => {
 
-      project.style.display =
-        filter === "all" || project.dataset.cat === filter
-          ? ""
-          : "none";
+      if (
+        filter === "all" ||
+        project.dataset.cat === filter
+      ) {
+        project.style.display = "";
+      } else {
+        project.style.display = "none";
+      }
 
     });
 
@@ -46,14 +56,18 @@ const links = document.querySelector(".links");
 if (menu && links) {
 
   menu.addEventListener("click", () => {
+
     links.classList.toggle("open");
+
   });
 
 
   links.querySelectorAll("a").forEach((link) => {
 
     link.addEventListener("click", () => {
+
       links.classList.remove("open");
+
     });
 
   });
@@ -62,10 +76,11 @@ if (menu && links) {
 
 
 // =====================================================
-// FORMULAIRE CONTACT → WHATSAPP
+// CONTACT → WHATSAPP
 // =====================================================
 
-const projectForm = document.getElementById("projectForm");
+const projectForm =
+  document.getElementById("projectForm");
 
 if (projectForm) {
 
@@ -109,7 +124,6 @@ if (projectForm) {
 const offerButtons =
   document.querySelectorAll("[data-offer]");
 
-
 offerButtons.forEach((button) => {
 
   button.addEventListener("click", () => {
@@ -120,12 +134,11 @@ offerButtons.forEach((button) => {
     const messageField =
       document.getElementById("projectMessage");
 
-
     if (messageField) {
 
       messageField.value =
-        "Bonjour God Digital, je suis intéressé(e) par " +
-        "l'offre " +
+        "Bonjour God Digital, je suis intéressé(e) " +
+        "par l'offre " +
         offer +
         ". Je voudrais avoir plus d'informations.";
 
@@ -152,7 +165,11 @@ const adminPanel =
   document.getElementById("adminPanel");
 
 
-if (openAdmin && closeAdmin && adminPanel) {
+if (
+  openAdmin &&
+  closeAdmin &&
+  adminPanel
+) {
 
   openAdmin.addEventListener("click", () => {
 
@@ -209,7 +226,7 @@ try {
 
 
 // =====================================================
-// AFFICHER LES CLIENTS
+// AFFICHAGE CLIENTS
 // =====================================================
 
 function displayClients() {
@@ -220,7 +237,9 @@ function displayClients() {
   if (clients.length === 0) {
 
     clientsList.innerHTML =
-      '<p class="admin-empty">Aucun client enregistré.</p>';
+      '<p class="admin-empty">' +
+      'Aucun client enregistré.' +
+      '</p>';
 
     return;
 
@@ -228,38 +247,44 @@ function displayClients() {
 
 
   clientsList.innerHTML =
-    clients.map((client, index) => `
+    clients
+      .map((client, index) => {
 
-      <div class="client-item">
+        return `
 
-        <div class="client-info">
+          <div class="client-item">
 
-          <strong>
-            ${escapeHTML(client.name)}
-          </strong>
+            <div class="client-info">
 
-          <span>
-            📞 ${escapeHTML(client.phone)}
-          </span>
+              <strong>
+                ${escapeHTML(client.name)}
+              </strong>
 
-          <span>
-            📁 ${escapeHTML(client.project)}
-          </span>
+              <span>
+                📞 ${escapeHTML(client.phone)}
+              </span>
 
-        </div>
+              <span>
+                📁 ${escapeHTML(client.project)}
+              </span>
+
+            </div>
 
 
-        <button
-          class="delete-client"
-          data-index="${index}"
-          type="button"
-        >
-          Supprimer
-        </button>
+            <button
+              class="delete-client"
+              data-index="${index}"
+              type="button"
+            >
+              Supprimer
+            </button>
 
-      </div>
+          </div>
 
-    `).join("");
+        `;
+
+      })
+      .join("");
 
 
   document
@@ -276,14 +301,13 @@ function displayClients() {
 
           clients.splice(index, 1);
 
-
           localStorage.setItem(
             "godDigitalClients",
             JSON.stringify(clients)
           );
 
-
           displayClients();
+
           updateClientCount();
 
         }
@@ -304,7 +328,6 @@ function updateClientCount() {
   const counter =
     document.getElementById("clientCount");
 
-
   if (counter) {
 
     counter.textContent =
@@ -316,7 +339,7 @@ function updateClientCount() {
 
 
 // =====================================================
-// PROTECTION DU HTML
+// PROTECTION HTML
 // =====================================================
 
 function escapeHTML(value) {
@@ -337,69 +360,66 @@ function escapeHTML(value) {
 
 
 // =====================================================
-// AJOUTER UN CLIENT
+// AJOUT CLIENT
 // =====================================================
 
 if (clientForm) {
 
-  clientForm.addEventListener("submit", (event) => {
+  clientForm.addEventListener(
+    "submit",
+    (event) => {
 
-    event.preventDefault();
-
-
-    const name =
-      document
-        .getElementById("adminClientName")
-        ?.value
-        .trim() || "";
+      event.preventDefault();
 
 
-    const phone =
-      document
-        .getElementById("clientPhone")
-        ?.value
-        .trim() || "";
+      const name =
+        document
+          .getElementById("adminClientName")
+          ?.value.trim() || "";
 
 
-    const project =
-      document
-        .getElementById("clientProject")
-        ?.value
-        .trim() || "";
+      const phone =
+        document
+          .getElementById("clientPhone")
+          ?.value.trim() || "";
 
 
-    if (!name || !phone || !project) {
+      const project =
+        document
+          .getElementById("clientProject")
+          ?.value.trim() || "";
 
-      return;
+
+      if (
+        !name ||
+        !phone ||
+        !project
+      ) {
+        return;
+      }
+
+
+      clients.push({
+        name,
+        phone,
+        project
+      });
+
+
+      localStorage.setItem(
+        "godDigitalClients",
+        JSON.stringify(clients)
+      );
+
+
+      clientForm.reset();
+
+      displayClients();
+
+      updateClientCount();
 
     }
-
-
-    clients.push({
-
-      name: name,
-
-      phone: phone,
-
-      project: project
-
-    });
-
-
-    localStorage.setItem(
-      "godDigitalClients",
-      JSON.stringify(clients)
-    );
-
-
-    clientForm.reset();
-
-
-    displayClients();
-
-    updateClientCount();
-
-  });
+  );
 
 }
 
